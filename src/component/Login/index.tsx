@@ -1,7 +1,7 @@
 import React, { FC, useContext } from 'react';
 import { useHistory } from 'react-router';
 import { LoginKey, useLoginForm } from '../../model/login';
-import { AuthService } from '../../service/auth';
+import { AuthService, LoginError } from '../../service/auth';
 import { GlobalStateContext } from '../../state';
 
 export const LoginForm: FC = () => {
@@ -13,7 +13,10 @@ export const LoginForm: FC = () => {
     AuthService.login(data)
       .then(user => dispatch({ type: 'LOGIN', payload: user }))
       .then(() => history.push('/'))
-      .catch(() => alert('Username or Password Error')),
+      .catch((err: LoginError) => {
+        console.log('ERROR', err.errors)
+        alert(err.errors[0].message);        
+      }),
   );
 
   return (

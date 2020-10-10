@@ -15,7 +15,7 @@ export const HomePage: FC = () => {
 
   return (
     <main className="home-page">
-      <h1>{'Welcome ' + state.user.name}</h1>
+      <h1>{'Welcome ' + state.user.username}</h1>
       <div>
         {state.isLogin ? (
           <button type="button" onClick={onLogout}>

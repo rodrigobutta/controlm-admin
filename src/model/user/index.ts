@@ -1,6 +1,6 @@
 export interface User {
-  name: string;
+  username: string;
   token?: string;
 }
 
-export const DEFAULT_USER: User = { name: 'GUEST' };
+export const DEFAULT_USER: User = { username: 'GUEST' };
